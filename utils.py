@@ -39,9 +39,9 @@ PROMPT_TEMPLATE = """你是一位数据分析助手，你的回应内容取决�
 
 
 def dataframe_agent(df, query):
-    load_dotenv()
     model = ChatOpenAI(
         base_url='https://twapi.openai-hk.com/v1',
+        api_key=st.secrets['API_KEY'],
         model='gpt-4.1-mini',
         temperature=0,
         max_tokens=8192
