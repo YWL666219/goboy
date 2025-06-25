@@ -1,14 +1,8 @@
-"""
-utils - 数据分析智能体使用的工具函数
-
-Author: 骆昊
-Version: 0.1
-Date: 2025/6/25
-"""
+# utils.py
 import json
-from turtle import st
+import streamlit as st  # 正确的导入方式
 
-from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
+from langchain_experimental.agents import create_pandas_dataframe_agent
 from langchain_openai import ChatOpenAI
 
 PROMPT_TEMPLATE = """你是一位数据分析助手，你的回应内容取决于用户的请求内容，请按照下面的步骤处理用户请求：
@@ -25,7 +19,7 @@ PROMPT_TEMPLATE = """你是一位数据分析助手，你的回应内容取决�
 
    - 折线图
      {"line":{"columns": ["A", "B", "C", ...], "data": [35, 42, 29, ...]}}
-     
+    
 3. 格式校验要求
    - 字符串值必须使用英文双引号
    - 数值类型不得添加引号
@@ -36,7 +30,6 @@ PROMPT_TEMPLATE = """你是一位数据分析助手，你的回应内容取决�
 注意：响应数据的"output"中不要有换行符、制表符以及其他格式符号。
 
 当前用户请求如下：\n"""
-
 
 def dataframe_agent(df, query):
     model = ChatOpenAI(
