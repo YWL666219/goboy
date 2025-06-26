@@ -146,7 +146,7 @@ def get_enhanced_model(model_choice="gpt-4.1-mini"):
 
     return ChatOpenAI(
         base_url='https://twapi.openai-hk.com/v1',
-        #api_key=st.secrets['API_KEY'],
+        api_key=st.secrets['API_KEY'],
         **config
     )
 
