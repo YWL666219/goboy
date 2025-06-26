@@ -1,6 +1,7 @@
 # utils.py
 import json
 import streamlit as st  # 正确的导入方式
+from dotenv import load_dotenv
 
 from langchain_experimental.agents import create_pandas_dataframe_agent
 from langchain_openai import ChatOpenAI
@@ -30,12 +31,12 @@ PROMPT_TEMPLATE = """你是一位数据分析助手，你的回应内容取决�
 注意：响应数据的"output"中不要有换行符、制表符以及其他格式符号。
 
 当前用户请求如下：\n"""
-
+load_dotenv()
 def dataframe_agent(df, query):
     model = ChatOpenAI(
         base_url='https://twapi.openai-hk.com/v1',
-        api_key=st.secrets['API_KEY'],
-        model='gpt-4.1-mini',
+        # api_key=st.secrets['API_KEY'],
+        model='gpt-3.5-turbo',
         temperature=0,
         max_tokens=8192
     )
